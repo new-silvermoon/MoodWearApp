@@ -13,6 +13,7 @@ import com.silvermoon.moodwearapp.model.MoodContract;
 import com.silvermoon.moodwearapp.model.MoodItem;
 import com.silvermoon.moodwearapp.utils.Constants;
 import com.silvermoon.moodwearapp.utils.MoodDBOperations;
+import java.util.Date;
 
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
@@ -66,11 +67,11 @@ public class DBIntentService extends IntentService {
                     case MoodContract.Mood.TABLE_NAME:
                         MoodItem item = (MoodItem) bundle.getSerializable(Constants.CONTENT_VALUE_BUNDLE_KEY);
                         cv.put(MoodContract.Mood.MOOD_NAME,item.getMoodName());
-                        cv.put(MoodContract.Mood.INSRTD_TSMP,item.getInsertTime());
+                        cv.put(MoodContract.Mood.INSRTD_TSMP,new Date().getTime());
                         break;
                     case MoodContract.Distraction.TABLE_NAME:
-                        DistractItem ditem = (DistractItem) bundle.getSerializable(Constants.CONTENT_VALUE_BUNDLE_KEY);
-                        cv.put(MoodContract.Distraction.INSRTD_TSMP,ditem.getIsnertTime());
+                        //DistractItem ditem = (DistractItem) bundle.getSerializable(Constants.CONTENT_VALUE_BUNDLE_KEY);
+                        cv.put(MoodContract.Distraction.INSRTD_TSMP,new Date().getTime());
                         break;
 
                 }
